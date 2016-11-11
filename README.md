@@ -1,5 +1,7 @@
 # A Linear-Time Variational Integrator for Multibody Systems
 
+[![Build Status](https://travis-ci.org/jslee02/wafr2016.svg?branch=master)](https://travis-ci.org/jslee02/wafr2016)
+
 :warning: This repository is under development. There is still room for improvement in terms of API design or code optimization. Also, the quantitative of the performance tests can be different from the paper, but the qualitative performance is the same.
 
 This repository contains the algorithms introduced by "A Linear-Time Variational Integrator for Multibody Systems" and several state-of-art algorithms that are implemented on top of [DART](http://dartsim.github.io/) v6.0.0.
