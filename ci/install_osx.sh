@@ -21,6 +21,7 @@ ros/deps/urdfdom
 ros/deps/urdfdom_headers
 ros/deps/console_bridge
 open-scene-graph
+gsl
 '
 
 brew install $PACKAGES | grep -v '%$'
