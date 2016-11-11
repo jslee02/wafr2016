@@ -5507,7 +5507,6 @@ std::vector<double> Skeleton::dm_integrate_with_report_Newton_SVI(
   // other joint types whoes configuration space type is not Euclidean space.
 
   const auto dofs = getNumDofs();
-  const auto delta = 1e-10;
   Eigen::MatrixXd J = Eigen::MatrixXd::Zero(dofs, dofs);
   bool firstRun = true;
   while (true)
@@ -5599,7 +5598,6 @@ std::vector<double> Skeleton::dm_integrate_with_report_Secant_DRNEA(
   // other joint types whoes configuration space type is not Euclidean space.
 
   const auto dofs = getNumDofs();
-  const auto delta = 1e-10;
   Eigen::MatrixXd J = Eigen::MatrixXd::Zero(dofs, dofs);
   while (true)
   {
