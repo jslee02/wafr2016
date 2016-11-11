@@ -55,7 +55,7 @@ void MyWindow::timeStepping()
   Eigen::VectorXd damping = computeDamping();
 //  mWorld->getSkeleton(0)->setForces(damping);
 //  mWorld->step();
-  mWorld->dm_step();
+  mWorld->dm_step_RIQN_DRNEA(true);
   std::cout << "E: " << mWorld->getSkeleton(0)->getTotalEnergy() << "\n";
 }
 

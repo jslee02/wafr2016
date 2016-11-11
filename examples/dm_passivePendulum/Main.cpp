@@ -233,7 +233,7 @@ int main(int argc, char* argv[])
     }
   }
 
-  world->dm_initialize_RIQN_SVI();
+  world->dm_initialize_RIQN_DRNEA();
 
 //  while (world->getTime() < 60.0)
 //  {
