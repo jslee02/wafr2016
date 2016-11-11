@@ -1,0 +1,31 @@
+# Copyright (c) 2015-2016, Georgia Tech Graphics Lab and Humanoid Robotics Lab
+# This file is provided under the "BSD-style" License
+
+# Find FLANN
+#
+# This sets the following variables:
+# FLANN_FOUND
+# FLANN_INCLUDE_DIRS
+# FLANN_VERSION
+
+find_package(PkgConfig QUIET)
+
+# Check to see if pkgconfig is installed.
+pkg_check_modules(PC_FLANN flann QUIET)
+
+# Include directories
+find_path(FLANN_INCLUDE_DIRS
+    NAMES flann/flann.h
+    HINTS ${PC_FLANN_INCLUDEDIR}
+    PATHS "${CMAKE_INSTALL_PREFIX}/include")
+
+# Version
+set(FLANN_VERSION ${PC_FLANN_VERSION})
+
+# Set (NAME)_FOUND if all the variables and the version are satisfied.
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(FLANN
+    FAIL_MESSAGE  DEFAULT_MSG
+    REQUIRED_VARS FLANN_INCLUDE_DIRS
+    VERSION_VAR   FLANN_VERSION)
+
