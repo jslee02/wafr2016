@@ -1652,7 +1652,7 @@ void BodyNode::dm_updateNextTransform()
 }
 
 //==============================================================================
-void BodyNode::dm_updateNextTransformGradient_q(std::size_t index)
+void BodyNode::dm_updateNextTransformGradient_q(std::size_t /*index*/)
 {
   // TODO: implement
 }

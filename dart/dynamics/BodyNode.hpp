@@ -906,6 +906,7 @@ protected:
   void dm_updateNextTransform();
   void dm_updateNextTransformGradient_q(std::size_t index);
   // This function should be called in the order of tree search (BFS or DFS).
+  // TODO(JS): Not implemented
 
   void dm_DRNEA_updateNextVelocity(double timeStep);
   // This function should be called in the order of tree search (BFS or DFS).
