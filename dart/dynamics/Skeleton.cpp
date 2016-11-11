@@ -4733,7 +4733,7 @@ Eigen::VectorXd& Skeleton::dm_SVI_computeD1Ld(
 
 //==============================================================================
 Eigen::MatrixXd Skeleton::dm_computeD2D1Ld_SVI_finite_difference(
-    const Eigen::VectorXd& qNext, double alpha)
+    const Eigen::VectorXd& /*qNext*/, double /*alpha*/)
 {
   DART_PROFILE_SCOPED_NODE("Skeleton::dm_computeD2D1Ld_SVI_finite_difference()");
 

@@ -757,6 +757,8 @@ public:
 
   Eigen::MatrixXd dm_computeD2D1Ld_SVI_finite_difference(
       const Eigen::VectorXd& qNext, double alpha = 0.5);
+  // TODO(JS): Not implemented
+
   Eigen::MatrixXd dm_computeD2D1Ld_SVI(
       const Eigen::VectorXd& qNext, double alpha = 0.5);
 
