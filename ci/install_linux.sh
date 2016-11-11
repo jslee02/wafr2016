@@ -22,6 +22,7 @@ libtinyxml2-dev
 liburdfdom-dev
 liburdfdom-headers-dev
 libopenscenegraph-dev
+libgsl0-dev
 '
 
 sudo apt-get -qq --yes --force-yes install $APT
