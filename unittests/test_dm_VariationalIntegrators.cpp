@@ -122,7 +122,11 @@ TEST(VariationalIntegrators, EnergyBehavior)
 {
   PerformanceTestSettings settings;
   settings.timeStep = 1e-3;
-  settings.numSteps = 1e+2; // 1000 sec
+#ifdef NDEBUG
+  settings.numSteps = 1e+3; // 1 sec
+#else
+  settings.numSteps = 1e+1; // 0.01 sec
+#endif
   settings.maxIter = 15u;
   settings.tol = 1e-9;
 
