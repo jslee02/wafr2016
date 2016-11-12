@@ -306,51 +306,6 @@ TEST(DMMurphey, LagrangianHessians)
 }
 
 //==============================================================================
-TEST(DMMurphey, CompareDelEquationOfJSAndMurpheyMethods)
-{
-  const auto numLinks = 25u;
-  const auto l = 1.5;
-  const auto posLower = math::constantsd::pi() * -0.5;
-  const auto posUpper = math::constantsd::pi() *  0.5;
-  const auto velLower = math::constantsd::pi() * -0.5;
-  const auto velUpper = math::constantsd::pi() *  0.5;
-  auto skeleton1 = createNLinkRobot(numLinks, Vector3d(0.3, 0.3, l), DOF_ROLL);
-  for (auto i = 0u; i < numLinks; ++i)
-  {
-    auto joint = skeleton1->getJoint(i);
-
-    const auto pos = math::random(posLower, posUpper);
-    const auto vel = math::random(velLower, velUpper);
-
-    joint->setPosition(0u, pos);
-    joint->setVelocity(0u, vel);
-  }
-  const Eigen::VectorXd randomQ
-      = skeleton1->getPositions()
-      + Eigen::VectorXd::Constant(skeleton1->getNumDofs(), 0.01);
-
-  auto skeleton2 = skeleton1->clone();
-  skeleton2->setPositions(skeleton1->getPositions());
-  skeleton2->setVelocities(skeleton1->getVelocities());
-  skeleton2->setAccelerations(skeleton1->getAccelerations());
-
-  EXPECT_EQ(skeleton1->getPositions(), skeleton2->getPositions());
-  EXPECT_EQ(skeleton1->getVelocities(), skeleton2->getVelocities());
-
-//  std::cout << skeleton1->getPositions().transpose() << std::endl;
-//  std::cout << skeleton2->getPositions().transpose() << std::endl;
-
-  skeleton1->dm_DRNEA_impulse_initialize();
-  skeleton2->dm_initialize_Secant_SVI();
-
-  EXPECT_TRUE(skeleton1->dm_computeFDEL_DRNEA(randomQ).isApprox(
-                skeleton2->dm_computeFDEL_SVI(randomQ, 0.5)));
-
-  std::cout << skeleton1->dm_computeFDEL_DRNEA(randomQ).transpose() << std::endl;
-  std::cout << skeleton2->dm_computeFDEL_SVI(randomQ, 0.5).transpose() << std::endl;
-}
-
-//==============================================================================
 int main(int argc, char* argv[])
 {
   ::testing::InitGoogleTest(&argc, argv);
