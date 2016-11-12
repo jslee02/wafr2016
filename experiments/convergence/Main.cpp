@@ -39,7 +39,6 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <gtest/gtest.h>
 #include "dart/dart.hpp"
 #include "../SkeletonGenerators.hpp"
 
