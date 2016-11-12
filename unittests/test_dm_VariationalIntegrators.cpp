@@ -187,21 +187,21 @@ TEST(VariationalIntegrators, EnergyBehavior)
       &simulation::World::dm_initialize_Secant_DRNEA,
       &simulation::World::dm_step_Secant_DRNEA>(settings));
 
-  settings.algorithmName = "Broyden + SVI";
-  settings.model = originalModel->clone();
-  settings.model->setPositions(originalModel->getPositions());
-  settings.model->setVelocities(originalModel->getVelocities());
-  results.emplace_back(testPendulum<
-      &simulation::World::dm_initialize_Broyden_SVI,
-      &simulation::World::dm_step_Broyden_SVI>(settings));
+//  settings.algorithmName = "Broyden + SVI";
+//  settings.model = originalModel->clone();
+//  settings.model->setPositions(originalModel->getPositions());
+//  settings.model->setVelocities(originalModel->getVelocities());
+//  results.emplace_back(testPendulum<
+//      &simulation::World::dm_initialize_Broyden_SVI,
+//      &simulation::World::dm_step_Broyden_SVI>(settings));
 
-  settings.algorithmName = "Broyden + DRNEA";
-  settings.model = originalModel->clone();
-  settings.model->setPositions(originalModel->getPositions());
-  settings.model->setVelocities(originalModel->getVelocities());
-  results.emplace_back(testPendulum<
-      &simulation::World::dm_initialize_Broyden_DRNEA,
-      &simulation::World::dm_step_Broyden_DRNEA>(settings));
+//  settings.algorithmName = "Broyden + DRNEA";
+//  settings.model = originalModel->clone();
+//  settings.model->setPositions(originalModel->getPositions());
+//  settings.model->setVelocities(originalModel->getVelocities());
+//  results.emplace_back(testPendulum<
+//      &simulation::World::dm_initialize_Broyden_DRNEA,
+//      &simulation::World::dm_step_Broyden_DRNEA>(settings));
 
   settings.algorithmName = "RIQN + SVI";
   settings.model = originalModel->clone();
