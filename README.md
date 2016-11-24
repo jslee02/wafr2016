@@ -10,7 +10,7 @@ This repository contains the algorithms introduced by "A Linear-Time Variational
 
 * Root finding algorithms to solve the DEL equation
   * Newton's method
-  * Scant method
+  * Secant method
   * Broyden method (used [GSL](https://www.gnu.org/software/gsl/))
   * Recursive Impluse-based Quasi-Newton (RIQN) method [1]
 * Recusive algorithms to evaluate the DEL equation
