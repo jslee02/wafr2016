@@ -56,6 +56,8 @@
 template <class T> using fcl_shared_ptr = std::shared_ptr<T>;
 template <class T> using fcl_weak_ptr = std::weak_ptr<T>;
 #else
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 template <class T> using fcl_shared_ptr = boost::shared_ptr<T>;
 template <class T> using fcl_weak_ptr = boost::weak_ptr<T>;
 #endif
