@@ -39,6 +39,7 @@
 
 #include <fcl/collision_object.h>
 #include "dart/collision/CollisionObject.hpp"
+#include "dart/collision/fcl/FCLTypes.hpp"
 
 namespace dart {
 namespace collision {
@@ -69,7 +70,7 @@ protected:
   /// Constructor
   FCLCollisionObject(CollisionDetector* collisionDetector,
       const dynamics::ShapeFrame* shapeFrame,
-      const boost::shared_ptr<fcl::CollisionGeometry>& fclCollGeom);
+      const fcl_shared_ptr<fcl::CollisionGeometry>& fclCollGeom);
 
   // Documentation inherited
   void updateEngineData() override;
