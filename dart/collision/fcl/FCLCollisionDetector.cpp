@@ -406,7 +406,7 @@ fcl::BVHModel<BV>* createEllipsoid(float _sizeX, float _sizeY, float _sizeZ)
   return model;
 }
 
-#if FCL_MAJOR_MINOR_VERSION_AT_MOST(0,4)
+#if FCL_MAJOR_MINOR_VERSION_AT_MOST(0,5)
 
 //==============================================================================
 template<class BV>
