@@ -214,14 +214,18 @@ void testPerformance(const std::vector<std::size_t>& dofs)
       joint->setVelocity(0u, vel);
     }
 
-    //  settings.algorithmName = "Continuous time";
-    //  settings.model = originalModel->clone();
-    //  settings.model->setPositions(originalModel->getPositions());
-    //  settings.model->setVelocities(originalModel->getVelocities());
-    //  results.emplace_back(testPendulum<
-    //                       &simulation::World::prestep,
-    //                       &simulation::World::step>(settings));
+    settings.timeStep = 1e-4;
+    settings.numSteps = 1e+4;
+    settings.algorithmName = "Euler method";
+    settings.model = originalModel->clone();
+    settings.model->setPositions(originalModel->getPositions());
+    settings.model->setVelocities(originalModel->getVelocities());
+    results.emplace_back(testPendulum<
+                         &simulation::World::prestep,
+                         &simulation::World::step>(settings));
 
+    settings.timeStep = 1e-3;
+    settings.numSteps = 1e+3;
     settings.algorithmName = "Newton + SVI";
     settings.model = originalModel->clone();
     settings.model->setPositions(originalModel->getPositions());

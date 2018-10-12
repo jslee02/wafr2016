@@ -1,13 +1,8 @@
 /*
- * Copyright (c) 2016, Georgia Tech Research Corporation
+ * Copyright (c) 2016, Graphics Lab, Georgia Tech Research Corporation
+ * Copyright (c) 2016, Humanoid Lab, Georgia Tech Research Corporation
+ * Copyright (c) 2016, Personal Robotics Lab, Carnegie Mellon University
  * All rights reserved.
- *
- * Author(s): Jeongseok Lee <jslee02@gmail.com>
- *
- * Georgia Tech Graphics Lab and Humanoid Robotics Lab
- *
- * Directed by Prof. C. Karen Liu and Prof. Mike Stilman
- * <karenliu@cc.gatech.edu> <mstilman@cc.gatech.edu>
  *
  * This file is provided under the following "BSD-style" License:
  *   Redistribution and use in source and binary forms, with or
@@ -34,58 +29,57 @@
  *   POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef DART_COLLISION_FCL_FCLCOLLISIONOBJECT_HPP_
-#define DART_COLLISION_FCL_FCLCOLLISIONOBJECT_HPP_
+#ifndef DART_GUI_OSG_IMGUIVIEWER_HPP_
+#define DART_GUI_OSG_IMGUIVIEWER_HPP_
 
-#include <fcl/collision_object.h>
-#include "dart/collision/CollisionObject.hpp"
-#include "dart/collision/fcl/FCLTypes.hpp"
+#include <memory>
+
+#include "dart/gui/osg/Viewer.hpp"
 
 namespace dart {
-namespace collision {
+namespace gui {
+namespace osg {
 
-class CollisionObject;
+class ImGuiHandler;
+class MainMenuWidget;
+class AboutWidget;
 
-class FCLCollisionObject : public CollisionObject
+class ImGuiViewer : public Viewer
 {
 public:
 
-  friend class FCLCollisionDetector;
+  /// Constructor for dart::gui::osg::Viewer. This will automatically create the
+  /// default event handler.
+  ImGuiViewer(
+      const ::osg::Vec4& clearColor = ::osg::Vec4(0.9f, 0.9f, 0.9f, 1.0f));
 
-  struct UserData
-  {
-    CollisionObject* mCollisionObject;
+  /// Destructor.
+  virtual ~ImGuiViewer();
 
-    UserData(CollisionObject* collisionObject);
-  };
+  /// Get ImGui handler.
+  ImGuiHandler* getImGuiHandler();
 
-  /// Return FCL collision object
-  fcl::CollisionObject* getFCLCollisionObject();
+  /// Get cosnt ImGui handler.
+  const ImGuiHandler* getImGuiHandler() const;
 
-  /// Return FCL collision object
-  const fcl::CollisionObject* getFCLCollisionObject() const;
+  /// Show About widget.
+  void showAbout();
 
-protected:
-
-  /// Constructor
-  FCLCollisionObject(CollisionDetector* collisionDetector,
-      const dynamics::ShapeFrame* shapeFrame,
-      const fcl_shared_ptr<fcl::CollisionGeometry>& fclCollGeom);
-
-  // Documentation inherited
-  void updateEngineData() override;
+  /// Hide About widget.
+  void hideAbout();
 
 protected:
 
-  /// FCL collision geometry user data
-  std::unique_ptr<UserData> mFCLCollisionObjectUserData;
+  /// ImGui handler.
+  ImGuiHandler* mImGuiHandler;
 
-  /// FCL collision object
-  std::unique_ptr<fcl::CollisionObject> mFCLCollisionObject;
+  /// About widget.
+  std::shared_ptr<AboutWidget> mAboutWidget;
 
 };
 
-}  // namespace collision
-}  // namespace dart
+} // namespace osg
+} // namespace gui
+} // namespace dart
 
-#endif  // DART_COLLISION_FCL_FCLCOLLISIONOBJECT_HPP_
+#endif // DART_GUI_OSG_IMGUIVIEWER_HPP_
