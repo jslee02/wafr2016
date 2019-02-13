@@ -22,6 +22,14 @@ dart_get_filename_components(header_names "gui headers" ${hdrs})
 if(HAVE_OPENSCENEGRAPH)
   list(APPEND header_names "osg/osg.hpp")
 endif(HAVE_OPENSCENEGRAPH)
+list(REMOVE_ITEM header_names
+  imgui.h
+  imgui_internal.h
+  stb_textedit.h
+  stb_rect_pack.h
+  stb_truetype.h
+  imconfig.h
+)
 dart_generate_include_header_list(
   gui_headers
   "dart/gui/"
