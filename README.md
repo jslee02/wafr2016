@@ -23,7 +23,36 @@ TODO
 
 ### How to Build
 
-TODO
+#### On Ubuntu
+
+**Install Dependencies**
+```
+$ sudo apt install cmake libassimp-dev libboost-all-dev libccd-dev libeigen3-dev libfcl-dev freeglut3-dev libxi-dev libxmu-dev libflann-dev libnlopt-dev libtinyxml-dev libtinyxml2-dev liburdfdom-dev liburdfdom-headers-dev libopenscenegraph-dev libgsl0-dev
+```
+
+**Build**
+```
+$ cd <wafr2016_root_dir>
+$ mkdir build
+$ cd build
+$ cmake .. -DCMAKE_BUILD_TYPE=Release
+$ make -j experiments examples
+```
+
+**Running Example**
+```
+$ cd <wafr2016_root_dir>/build/bin
+$ ./dm_passivePendulum
+```
+
+**Running Experiments**
+```
+$ cd <wafr2016_root_dir>/build/bin
+$ ./energy_conservation
+$ ./convergence
+$ ./iteration_numbers
+$ ./performance_comparisons
+```
 
 ### References
 
